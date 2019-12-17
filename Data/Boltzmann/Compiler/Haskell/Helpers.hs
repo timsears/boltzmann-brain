@@ -85,7 +85,7 @@ importQual module' synonym =
              }
 
 exportType :: String -> ExportSpec ()
-exportType s = EThingWith () (NoWildcard ()) (unname s) []
+exportType s = EThingWith () (EWildcard () 0) (unname s) []
 
 exportTypes :: PSystem Double -> [ExportSpec ()]
 exportTypes sys = map exportType $ typeList sys

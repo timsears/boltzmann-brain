@@ -295,18 +295,13 @@ parseSystem :: [Flag] -> IO (System Int, SystemType)
 parseSystem opts = do
     inFormat <- getInputFormat opts
     info $ "Using "++ quote (show inFormat) ++ " specification format."
-
-    info "Parsing system..."
     text <- getContents
     dat  <- parseSpec inFormat text
     sys  <- getSystem dat
-
     let force = Force `elem` opts
     sysType <- errors inFormat force sys -- check for errors
-
     let werror = Werror `elem` opts
     warnings werror force sys         -- check for warnings
-
     return (sys, sysType)
 
 tuningConf :: System a -> (Double, Int)

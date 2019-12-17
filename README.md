@@ -233,6 +233,7 @@ Caveats:
 
 ````
 git remote add teh git@github.com:teh/nixpkgs.git
+git fetch teh cvxpy
 git checkout -b cvxpy teh/cvxpy
 git rebase nixpkgs-unstable
 ````

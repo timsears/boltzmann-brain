@@ -77,6 +77,8 @@ in
     ++ (with pkgs; [
 
       feh # image viewer
+      gv # .eps viewer
+      graphviz # provides dot
       # System requirements.
       readline # needed on linux? doesn't hurt
       lsb-release # currently in nixpkgs-unstable but not in nixos-19.09
@@ -87,6 +89,7 @@ in
       python3Packages.setuptools
     ])
     ++ (with pkgs.python3Packages; [
+      matplotlib
       numpy
       scipy
       cvxpy
@@ -122,6 +125,7 @@ in
     echo "Installing medulla"
     easy_install-3.7 -q medulla
     #This should now work ... cabal build; cabal run bb -- sample -i examples/algebraic/boolean.alg"
+    export PATH=$PATH:~/.cabal/bin
     '';
 }
 ); }.der

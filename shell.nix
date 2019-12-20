@@ -70,12 +70,13 @@ in
       (with haskellPackages; (ghcWith (p: with p;
         drv.propagatedBuildInputs ++ [
           cabal-install
+          cabal2nix
+          ghcid.bin
           hasktags
           haskdogs
-          ghcid
+          ghcide
         ])))]
     ++ (with pkgs; [
-
       feh # image viewer
       gv # .eps viewer
       graphviz # provides dot
@@ -126,6 +127,7 @@ in
     easy_install-3.7 -q medulla
     #This should now work ... cabal build; cabal run bb -- sample -i examples/algebraic/boolean.alg"
     export PATH=$PATH:~/.cabal/bin
+    export NIX_GHC_LIBDIR=$(ghc --print-libdir)
     '';
 }
 ); }.der
